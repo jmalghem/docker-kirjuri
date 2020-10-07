@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+    web:
+        build:
+            context: ./
+            dockerfile: Dockerfile-frontend
+        image: frontend:1.0
+        ports:
+            - "899:80"
+        volumes:
+            - ./kirjuri:/app
+        links:
+            - db:db
+    db:
+        image: mysql:latest
+        volumes:
+            - ~/mysql:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=MySuperRootPassword
+    myadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "999:80"
+        links:
+            - db:db

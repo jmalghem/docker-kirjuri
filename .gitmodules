@@ -1,0 +1,3 @@
+[submodule "kirjuri"]
+	path = kirjuri
+	url = https://github.com/AnttiKurittu/kirjuri
